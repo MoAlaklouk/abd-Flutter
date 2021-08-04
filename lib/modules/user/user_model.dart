@@ -1,29 +1,63 @@
+import 'package:app/models/user/user_model.dart';
 import 'package:flutter/material.dart';
-
-class UserModel {
-  final int id;
-  final String name;
-  final String phone;
-  UserModel({
-    @required this.id,
-    @required this.name,
-    @required this.phone,
-  });
-}
 
 class UserScreen extends StatelessWidget {
   List<UserModel> users = [
-    UserModel(id: 1, name: 'mo', phone: '11111111'),
-    UserModel(id: 2, name: 'ahmed', phone: '2222222'),
-    UserModel(id: 3, name: 'mohsen', phone: '3333333'),
-  UserModel(id: 4, name: 'seed', phone: '44444444'),
-    UserModel(id: 5, name: 'ans', phone: '555555'),
-    UserModel(id: 6, name: 'khaled', phone: '12342345678'),
-    UserModel(id: 7, name: 'dad', phone: '12345672348'),
-    UserModel(id: 8, name: 'mom', phone: '12345234678'),
-    UserModel(id: 9, name: 'khaled', phone: '12342345678'),
-    UserModel(id: 10, name: 'dad', phone: '12345672348'),
-    UserModel(id: 11, name: 'mom', phone: '12345234678'),
+    UserModel(
+      id: 1,
+      name: 'mo',
+      phone: '11111111',
+    ),
+    UserModel(
+      id: 2,
+      name: 'ahmed',
+      phone: '2222222',
+    ),
+    UserModel(
+      id: 3,
+      name: 'mohsen',
+      phone: '3333333',
+    ),
+    UserModel(
+      id: 4,
+      name: 'seed',
+      phone: '44444444',
+    ),
+    UserModel(
+      id: 5,
+      name: 'ans',
+      phone: '555555',
+    ),
+    UserModel(
+      id: 6,
+      name: 'khaled',
+      phone: '12342345678',
+    ),
+    UserModel(
+      id: 7,
+      name: 'dad',
+      phone: '12345672348',
+    ),
+    UserModel(
+      id: 8,
+      name: 'mom',
+      phone: '12345234678',
+    ),
+    UserModel(
+      id: 9,
+      name: 'khaled',
+      phone: '12342345678',
+    ),
+    UserModel(
+      id: 10,
+      name: 'dad',
+      phone: '12345672348',
+    ),
+    UserModel(
+      id: 11,
+      name: 'mom',
+      phone: '12345234678',
+    ),
   ];
 
   @override
