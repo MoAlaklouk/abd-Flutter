@@ -5,6 +5,7 @@ import 'package:app/modules/massenger/messenger_screen.dart';
 import 'package:app/modules/result-bmi/result_BMI.dart';
 import 'package:app/modules/user/user_model.dart';
 import 'package:flutter/material.dart';
+import 'layout/home_layout.dart';
 import 'modules/home/home_man.dart';
 
 void main() {
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Login(),
+      home: HomeLayout(),
     );
   }
 }

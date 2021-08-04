@@ -77,8 +77,9 @@ class _LoginState extends State<Login> {
                       controller: controllerPass,
                       prefix: Icons.lock,
                       inputType: TextInputType.visiblePassword,
-                      isPassword: isVisible,  
-                      suffixIcon: isVisible? Icons.visibility:Icons.visibility_off ,
+                      isPassword: isVisible,
+                      suffixIcon:
+                          isVisible ? Icons.visibility : Icons.visibility_off,
                       suffixPress: () {
                         setState(() {
                           isVisible = !isVisible;
