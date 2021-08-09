@@ -27,20 +27,23 @@ Widget defaultButton({
       ),
     );
 Widget textfield({
-  TextEditingController controller,
-  Function validate,
+   
+ @required TextEditingController controller,
+ @required Function validate,
   Function onChange,
   Function onSubmit,
-  TextInputType inputType,
-  String text,
-  IconData prefix,
+ @required  TextInputType inputType,
+ @required  String text,
+ @required  IconData prefix,
   IconData suffixIcon,
   Function suffixPress,
-  bool isPassword =true,
+  bool isPassword =false,
+Function OnTapFunc,
 
 
 }) =>
     TextFormField(
+      onTap: OnTapFunc,
       controller: controller,
       validator: validate,
       onChanged: onChange,
