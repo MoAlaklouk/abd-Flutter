@@ -1,14 +1,23 @@
+import 'dart:ui';
+
+import 'package:app/shared/components/components.dart';
+import 'package:app/shared/components/constants.dart';
 import 'package:flutter/material.dart';
 
 class TaskSecreen extends StatelessWidget {
-
-
   @override
   Widget build(BuildContext context) {
-    return Text('Task Secreen',style: TextStyle(
-      fontSize: 30
-    ),
-      
+    return ListView.separated(
+      itemBuilder: (context, index) => builedTaskInfo(getTaskDB[index]),
+      separatorBuilder: (context, index) => Padding(
+        padding: const EdgeInsetsDirectional.only(start: 20, end: 20),
+        child: Container(
+          color: Colors.grey[300],
+          width: double.infinity,
+          height: 1,
+        ),
+      ),
+      itemCount: getTaskDB.length,
     );
   }
 }
