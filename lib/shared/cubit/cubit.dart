@@ -8,7 +8,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sqflite/sqflite.dart';
 
 class AppCubit extends Cubit<AppStastes> {
-  List<Map> getTaskDB = [];
+  List<Map> newTaskDB = [];
+  List<Map> doneTaskDB = [];
+  List<Map> archivedTaskDB = [];
 
   bool openBottomSheet = false;
   Icon iconFloatingActionButton = Icon(Icons.edit);
@@ -47,11 +49,7 @@ class AppCubit extends Cubit<AppStastes> {
         });
       },
       onOpen: (dataBase) {
-        getFromDB(dataBase).then((value) {
-          getTaskDB = value;
-         
-          emit(AppgeteDB());
-        });
+        getFromDB(dataBase);
         print('open db');
       },
     ).then((value) {
@@ -72,13 +70,9 @@ class AppCubit extends Cubit<AppStastes> {
               'INSERT INTO tasks(title,date,time,status) VALUES("$titel","$date","$time","new")')
           .then((value) {
         print('$value insert successfully');
-        
+
         emit(AppInserteDB());
-        getFromDB(dataBase).then((value) {
-          getTaskDB = value;
-          print(getTaskDB);
-          emit(AppgeteDB());
-        });
+        getFromDB(dataBase);
       }).catchError((erorr) {
         print('erorr when insert ${erorr.toString()}');
       });
@@ -86,9 +80,38 @@ class AppCubit extends Cubit<AppStastes> {
     });
   }
 
-  Future<List<Map>> getFromDB(dataBase) async {
+  void getFromDB(dataBase) {
+    newTaskDB = [];
+    doneTaskDB = [];
+    archivedTaskDB = [];
     emit(AppgeteDBLoading());
-    return await dataBase.rawQuery('SELECT * FROM tasks');
+    dataBase.rawQuery('SELECT * FROM tasks').then((value) {
+    
+      value.forEach((element) {
+        if (element['status'] == 'archived') {
+          newTaskDB.add(element);
+        } else if (element['status'] == 'done') {
+          doneTaskDB.add(element);
+        } else {
+          archivedTaskDB.add(element);
+        }
+      });
+      emit(AppgeteDB());
+     
+    });
+    ;
+  }
+
+  void updateFromDB({
+    @required String status,
+    @required int id,
+  }) {
+    dataBase.rawUpdate('UPDATE tasks SET status = ? WHERE id = ?', [
+      '$status',
+      id,
+    ]).then((value) {
+      emit(AppUpdateeDB());
+    });
   }
 
   void changeBottomSheetStates({

@@ -10,13 +10,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class TaskSecreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-  
     return BlocConsumer<AppCubit, AppStastes>(
       listener: (context, state) {},
       builder: (context, state) {
-          var getTaskDB = AppCubit.get(context).getTaskDB;
+        var getTaskDB = AppCubit.get(context).newTaskDB;
         return ListView.separated(
-          itemBuilder: (context, index) => builedTaskInfo(getTaskDB[index]),
+          itemBuilder: (context, index) => builedTaskInfo(getTaskDB[index],context),
           separatorBuilder: (context, index) => Padding(
             padding: const EdgeInsetsDirectional.only(start: 20, end: 20),
             child: Container(

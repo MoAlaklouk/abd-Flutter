@@ -1,3 +1,4 @@
+import 'package:app/shared/cubit/cubit.dart';
 import 'package:flutter/material.dart';
 
 Widget defaultButton({
@@ -55,7 +56,7 @@ Widget textfield({
             : null,
       ),
     );
-Widget builedTaskInfo(Map model) => Padding(
+Widget builedTaskInfo(Map model, context) => Padding(
       padding: const EdgeInsets.all(20.0),
       child: Row(
         children: [
@@ -70,18 +71,39 @@ Widget builedTaskInfo(Map model) => Padding(
           SizedBox(
             width: 20,
           ),
-          Column(
-            children: [
-              Text(
-                ' ${model['title']}',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-              Text(
-                ' ${model['date']}',
-                style: TextStyle(color: Colors.grey),
-              )
-            ],
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  ' ${model['title']}',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  ' ${model['date']}',
+                  style: TextStyle(color: Colors.grey),
+                )
+              ],
+            ),
           ),
+          IconButton(
+              icon: Icon(
+                Icons.check_circle,
+                color: Colors.green,
+              ),
+              onPressed: () {
+                AppCubit.get(context)
+                    .updateFromDB(status: 'done', id: model['id']);
+              }),
+          IconButton(
+              icon: Icon(
+                Icons.archive,
+                color: Colors.red,
+              ),
+              onPressed: () {
+                AppCubit.get(context)
+                    .updateFromDB(status: 'archived', id: model['id']);
+              }),
         ],
       ),
     );
