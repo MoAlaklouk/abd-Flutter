@@ -86,9 +86,10 @@ class AppCubit extends Cubit<AppStastes> {
     archivedTaskDB = [];
     emit(AppgeteDBLoading());
     dataBase.rawQuery('SELECT * FROM tasks').then((value) {
-    
+      //print(value);
+
       value.forEach((element) {
-        if (element['status'] == 'archived') {
+        if (element['status'] == 'new') {
           newTaskDB.add(element);
         } else if (element['status'] == 'done') {
           doneTaskDB.add(element);
@@ -96,8 +97,11 @@ class AppCubit extends Cubit<AppStastes> {
           archivedTaskDB.add(element);
         }
       });
+      // print(archivedTaskDB);
+      //    print(newTaskDB);
+      //       print(doneTaskDB);
+
       emit(AppgeteDB());
-     
     });
     ;
   }
@@ -110,7 +114,18 @@ class AppCubit extends Cubit<AppStastes> {
       '$status',
       id,
     ]).then((value) {
+      getFromDB(dataBase);
       emit(AppUpdateeDB());
+    });
+  }
+
+  void deleteFromDB({
+    @required int id,
+  }) {
+    dataBase.rawDelete(
+        'DELETE FROM tasks WHERE id = ?', [id]).then((value) {
+      getFromDB(dataBase);
+      emit(AppDeleteDB());
     });
   }
 

@@ -14,18 +14,7 @@ class DoneSecreen extends StatelessWidget {
       listener: (context, state) {},
       builder: (context, state) {
         var getTaskDB = AppCubit.get(context).doneTaskDB;
-        return ListView.separated(
-          itemBuilder: (context, index) => builedTaskInfo(getTaskDB[index],context),
-          separatorBuilder: (context, index) => Padding(
-            padding: const EdgeInsetsDirectional.only(start: 20, end: 20),
-            child: Container(
-              color: Colors.grey[300],
-              width: double.infinity,
-              height: 1,
-            ),
-          ),
-          itemCount: getTaskDB.length,
-        );
+        return tasksBuilder(getTaskDB: getTaskDB);
       },
     );
   }

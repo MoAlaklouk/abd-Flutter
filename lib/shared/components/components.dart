@@ -1,4 +1,5 @@
 import 'package:app/shared/cubit/cubit.dart';
+import 'package:conditional_builder/conditional_builder.dart';
 import 'package:flutter/material.dart';
 
 Widget defaultButton({
@@ -56,54 +57,93 @@ Widget textfield({
             : null,
       ),
     );
-Widget builedTaskInfo(Map model, context) => Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: Row(
-        children: [
-          CircleAvatar(
-            backgroundColor: Colors.blue,
-            child: Text('${model['time']}',
-                style: TextStyle(
-                  color: Colors.white,
-                )),
-            radius: 40,
-          ),
-          SizedBox(
-            width: 20,
-          ),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  ' ${model['title']}',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  ' ${model['date']}',
-                  style: TextStyle(color: Colors.grey),
-                )
-              ],
+Widget builedTaskInfo(Map model, context) => Dismissible(
+      key: Key(model['id'].toString()),
+      onDismissed: (direction) {
+        AppCubit.get(context).deleteFromDB(id: model['id']);
+      },
+      child: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Row(
+          children: [
+            CircleAvatar(
+              backgroundColor: Colors.blue,
+              child: Text('${model['time']}',
+                  style: TextStyle(
+                    color: Colors.white,
+                  )),
+              radius: 40,
             ),
+            SizedBox(
+              width: 20,
+            ),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    ' ${model['title']}',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    ' ${model['date']}',
+                    style: TextStyle(color: Colors.grey),
+                  )
+                ],
+              ),
+            ),
+            IconButton(
+                icon: Icon(
+                  Icons.check_circle,
+                  color: Colors.green,
+                ),
+                onPressed: () {
+                  AppCubit.get(context)
+                      .updateFromDB(status: 'done', id: model['id']);
+                }),
+            IconButton(
+                icon: Icon(
+                  Icons.archive,
+                  color: Colors.red,
+                ),
+                onPressed: () {
+                  AppCubit.get(context)
+                      .updateFromDB(status: 'archived', id: model['id']);
+                }),
+          ],
+        ),
+      ),
+    );
+
+Widget tasksBuilder({
+  @required List getTaskDB,
+}) =>
+    ConditionalBuilder(
+      builder: (context) => ListView.separated(
+        itemBuilder: (context, index) =>
+            builedTaskInfo(getTaskDB[index], context),
+        separatorBuilder: (context, index) => Padding(
+          padding: const EdgeInsetsDirectional.only(start: 20, end: 20),
+          child: Container(
+            color: Colors.grey[300],
+            width: double.infinity,
+            height: 1,
           ),
-          IconButton(
-              icon: Icon(
-                Icons.check_circle,
-                color: Colors.green,
-              ),
-              onPressed: () {
-                AppCubit.get(context)
-                    .updateFromDB(status: 'done', id: model['id']);
-              }),
-          IconButton(
-              icon: Icon(
-                Icons.archive,
-                color: Colors.red,
-              ),
-              onPressed: () {
-                AppCubit.get(context)
-                    .updateFromDB(status: 'archived', id: model['id']);
-              }),
-        ],
+        ),
+        itemCount: getTaskDB.length,
+      ),
+      condition: getTaskDB.length > 0,
+      fallback: (context) => Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.add_circle, size: 50, color: Colors.grey),
+            Text(
+              'There are no Tasks',
+              style: TextStyle(fontSize: 40, color: Colors.grey),
+            ),
+          ],
+        ),
       ),
     );

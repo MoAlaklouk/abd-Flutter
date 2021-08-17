@@ -34,7 +34,8 @@ class HomeLayout extends StatelessWidget {
           return Scaffold(
             key: scaffoldKey,
             appBar: AppBar(
-              title: Text(cubit.appbar[cubit.indexGen]),
+              title: Text(cubit.appbar[cubit.indexGen],),
+              
             ),
             floatingActionButton: FloatingActionButton(
               child: cubit.iconFloatingActionButton,

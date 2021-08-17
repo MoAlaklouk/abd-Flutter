@@ -15,3 +15,5 @@ class AppgeteDBLoading extends AppStastes {}
 class AppCangBotomSheetState extends AppStastes {}
 
 class AppUpdateeDB extends AppStastes {}
+
+class AppDeleteDB extends AppStastes {}
