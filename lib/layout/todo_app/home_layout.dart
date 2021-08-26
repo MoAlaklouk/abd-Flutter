@@ -1,6 +1,4 @@
-import 'package:app/modules/archived_secreen/archived_secreen.dart';
-import 'package:app/modules/done_secreen/done_secreen.dart';
-import 'package:app/modules/tasks_secreen/task_secreen.dart';
+
 import 'package:app/shared/components/components.dart';
 import 'package:app/shared/components/constants.dart';
 import 'package:app/shared/cubit/cubit.dart';

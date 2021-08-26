@@ -1,0 +1,135 @@
+{
+    "status": "ok",
+    "totalResults": 10,
+    "articles": [{
+            "source": {
+                "id": "techcrunch",
+                "name": "TechCrunch"
+            },
+            "author": "Natasha Mascarenhas",
+            "title": "Flockjay cuts at least half of its workforce as it pivots away from bootcamps into B2B SaaS",
+            "description": "Flockjay, a bootcamp startup that helps laid off people and job seekers break into tech, cut half of its own employees amid a broader pivot to a B2B SaaS platform, TechCrunch has learned from sources close to the company. The layoffs impacted every nontechnic…",
+            "url": "https://techcrunch.com/2021/08/24/flockjay-cuts-at-least-half-of-its-workforce-as-it-pivots-away-from-bootcamps-into-b2b-saas/",
+            "urlToImage": "https://techcrunch.com/wp-content/uploads/2020/08/GettyImages-1172583733.jpg?w=600",
+            "publishedAt": "2021-08-24T20:25:08Z",
+            "content": "Flockjay, a bootcamp startup that helps laid off people and job seekers break into tech, cut half of its own employees amid a broader pivot to a B2B SaaS platform, TechCrunch has learned from sources… [+3884 chars]"
+        },
+        {
+            "source": {
+                "id": "techcrunch",
+                "name": "TechCrunch"
+            },
+            "author": "Connie Loizos",
+            "title": "Fika Ventures nearly triples its assets under management: \"It's definitely a crazy time\"",
+            "description": "Fika Ventures is a five-year-old, L.A.-based seed stage fund that has been funding mostly business-to-business startups, as well as fintech companies and a sprinkling of healthcare IT startups — as long as they don’t involve hardware or FDA approval. The firm…",
+            "url": "https://techcrunch.com/2021/08/24/fika-ventures-nearly-triples-its-assets-under-management-its-definitely-a-crazy-time/",
+            "urlToImage": "https://techcrunch.com/wp-content/uploads/2021/08/Fika_0523_High_Res_wk.jpg?w=600",
+            "publishedAt": "2021-08-24T19:46:18Z",
+            "content": "Fika Ventures is a five-year-old, L.A.-based seed stage fund that has been funding mostly business-to-business startups, as well as fintech companies and a sprinkling of healthcare IT startups — as l… [+6343 chars]"
+        },
+        {
+            "source": {
+                "id": "techcrunch",
+                "name": "TechCrunch"
+            },
+            "author": "Kris Holt",
+            "title": "Microsoft will bring cloud gaming to Xbox consoles this holiday season",
+            "description": "Microsoft is moving into the next phase of its plan to bring Xbox Cloud Gaming to as many devices as possible, bringing it to Xbox Series X/S and Xbox One consoles this holiday season.",
+            "url": "https://techcrunch.com/2021/08/24/microsoft-will-bring-cloud-gaming-to-xbox-consoles-this-holiday-season/",
+            "urlToImage": "https://techcrunch.com/wp-content/uploads/2021/08/CloudGaming_gamescom_Inline1.jpg?w=711",
+            "publishedAt": "2021-08-24T19:26:03Z",
+            "content": "Microsoft is moving into the next phase of its plan to bring Xbox Cloud Gaming to as many devices as possible, and it’s one of the most important steps yet. Starting this holiday season, Xbox Game Pa… [+941 chars]"
+        },
+        {
+            "source": {
+                "id": "techcrunch",
+                "name": "TechCrunch"
+            },
+            "author": "Manish Singh",
+            "title": "Bankers chase Byju's for IPO, valuation pegged up to $50 billion",
+            "description": "Nearly every top investment bank is chasing Byju’s and nudging the most valuable Indian startup to seriously explore the public markets as soon as next year. Most banks have given Byju’s a proposed valuation in the range of $40 to $45 billion, but some includ…",
+            "url": "https://techcrunch.com/2021/08/24/bankers-chase-byjus-for-ipo-valuation-pegged-up-to-50-billion/",
+            "urlToImage": "https://techcrunch.com/wp-content/uploads/2021/03/GettyImages-1132893022.jpg?w=600",
+            "publishedAt": "2021-08-24T18:19:01Z",
+            "content": "Nearly every top investment bank is chasing Byjus and nudging the most valuable Indian startup to seriously explore the public markets as soon as next year.\r\nMost banks have given Byjus a proposed va… [+2365 chars]"
+        },
+        {
+            "source": {
+                "id": "techcrunch",
+                "name": "TechCrunch"
+            },
+            "author": "Alex Wilhelm, Anna Heim",
+            "title": "Boston’s startup market is more than setting records in scorching start to year",
+            "description": "Boston is benefiting from larger changes to the U.S. venture capital market, helping close historical gaps in its startup funding market and access funds that previously might have skipped the region.",
+            "url": "https://techcrunch.com/2021/08/24/bostons-startup-market-is-more-than-setting-records-in-scorching-start-to-year/",
+            "urlToImage": "https://techcrunch.com/wp-content/uploads/2020/05/NSussman_Techcrunch_Exchange_v3-BLU.jpg?w=533",
+            "publishedAt": "2021-08-24T17:58:28Z",
+            "content": "The global startup community is currently enjoying a period of fundraising success that may be unprecedented in the history of technology and venture capital. While this is happening around the world… [+2048 chars]"
+        },
+        {
+            "source": {
+                "id": "techcrunch",
+                "name": "TechCrunch"
+            },
+            "author": "Aria Alamalhodaei",
+            "title": "Ispace unveils bigger moon lander capable of surviving lunar nights",
+            "description": "Ispace, a Japanese space startup that aims to lead the development of a lunar economy, has unveiled its design for a large lander that could go to the moon as early as 2024. Tokyo-based ispace said this next-gen lander, dubbed Series 2, would be used on the c…",
+            "url": "https://techcrunch.com/2021/08/24/ispace-unveils-bigger-moon-lander-capable-of-surviving-lunar-nights/",
+            "urlToImage": "https://techcrunch.com/wp-content/uploads/2021/08/ispace.jpeg?w=533",
+            "publishedAt": "2021-08-24T17:56:41Z",
+            "content": "Ispace, a Japanese space startup that aims to lead the development of a lunar economy, has unveiled its design for a large lander that could go to the moon as early as 2024.\r\nTokyo-based ispace said … [+2454 chars]"
+        },
+        {
+            "source": {
+                "id": "techcrunch",
+                "name": "TechCrunch"
+            },
+            "author": "Alexandra Ames",
+            "title": "TechCrunch Disrupt 2021 kicks off in less than a month",
+            "description": "We’re less than one month away from kicking off our flagship global event, TechCrunch Disrupt 2021. And we’re feeling the adrenaline rush that can only come when more than 10,000 startup icons, experts, founders, investors and makers gather to learn, inspire,…",
+            "url": "https://techcrunch.com/2021/08/24/techcrunch-disrupt-2021-kicks-off-in-less-than-a-month/",
+            "urlToImage": "https://techcrunch.com/wp-content/uploads/2020/07/Disrupt2020PostImage-1.png?w=640",
+            "publishedAt": "2021-08-24T17:51:08Z",
+            "content": "Were less than one month away from kicking off our flagship global event, TechCrunch Disrupt 2021. And were feeling the adrenaline rush that can only come when more than 10,000 startup icons, experts… [+2804 chars]"
+        },
+        {
+            "source": {
+                "id": "techcrunch",
+                "name": "TechCrunch"
+            },
+            "author": "Romain Dillet",
+            "title": "Paxos renames its stablecoin from PAX to USDP",
+            "description": "Paxos, the company behind the Paxos Standard stablecoin (PAX), has announced that it is changing the name of its cryptoasset. Paxos Standard is now Pax Dollar, and you’ll soon be able to identify it on your favorite cryptocurrency exchange, wallet or explorer…",
+            "url": "https://techcrunch.com/2021/08/24/paxos-renames-its-stablecoin-from-pax-to-usdp/",
+            "urlToImage": "https://techcrunch.com/wp-content/uploads/2020/11/GettyImages-1250915780.jpg?w=600",
+            "publishedAt": "2021-08-24T17:50:15Z",
+            "content": "Paxos, the company behind the Paxos Standard stablecoin (PAX), has announced that it is changing the name of its cryptoasset. Paxos Standard is now Pax Dollar, and youll soon be able to identify it o… [+2031 chars]"
+        },
+        {
+            "source": {
+                "id": "techcrunch",
+                "name": "TechCrunch"
+            },
+            "author": "Natasha Mascarenhas",
+            "title": "NoRedInk raises $50 million Series B to help students become better writers",
+            "description": "“In order to become a better writer, read your written words out loud.” That’s one of the first, and best, writing tips I ever received. I always found the advice ironic because it required me to change the medium of my writing to become a better writer. Stil…",
+            "url": "https://techcrunch.com/2021/08/24/noredink-raises-50-million-series-b-to-help-students-become-better-writers/",
+            "urlToImage": "https://techcrunch.com/wp-content/uploads/2019/06/GettyImages-1094956900-e1559746431929.jpg?w=586",
+            "publishedAt": "2021-08-24T17:40:39Z",
+            "content": "In order to become a better writer, read your written words out loud.\r\nThats one of the first, and best, writing tips I ever received. I always found the advice ironic because it required me to chang… [+3840 chars]"
+        },
+        {
+            "source": {
+                "id": "techcrunch",
+                "name": "TechCrunch"
+            },
+            "author": "Jordan Crook",
+            "title": "Aileen Lee and Guild Education's Rachel Carlson will share how to get to yes on Extra Crunch Live",
+            "description": "Aileen Lee is one of the most prestigious and successful venture capitalists of the past decade. Before starting her own firm in Cowboy Ventures, Lee was a partner at KPCB for more than 12 years. Her portfolio includes DocSend, Ironclad, Philz Coffee, StyleSe…",
+            "url": "https://techcrunch.com/2021/08/24/aileen-lee-and-guild-educations-rachel-carlson-will-share-how-to-get-to-yes-on-extra-crunch-live/",
+            "urlToImage": "https://techcrunch.com/wp-content/uploads/2021/08/ECL-2021-august-25.jpg?w=711",
+            "publishedAt": "2021-08-24T17:25:32Z",
+            "content": "Aileen Lee is one of the most prestigious and successful venture capitalists of the past decade. Before starting her own firm in Cowboy Ventures, Lee was a partner at KPCB for more than 12 years. Her… [+1947 chars]"
+        }
+    ]
+}

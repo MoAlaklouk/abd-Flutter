@@ -1,7 +1,8 @@
-import 'package:app/modules/archived_secreen/archived_secreen.dart';
-import 'package:app/modules/done_secreen/done_secreen.dart';
-import 'package:app/modules/tasks_secreen/task_secreen.dart';
+import 'package:app/modules/todoApp_secreens/archived_secreen/archived_secreen.dart';
+import 'package:app/modules/todoApp_secreens/done_secreen/done_secreen.dart';
+import 'package:app/modules/todoApp_secreens/tasks_secreen/task_secreen.dart';
 import 'package:app/shared/cubit/states.dart';
+import 'package:app/shared/network/local/cache_helper.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -97,10 +98,6 @@ class AppCubit extends Cubit<AppStastes> {
           archivedTaskDB.add(element);
         }
       });
-      // print(archivedTaskDB);
-      //    print(newTaskDB);
-      //       print(doneTaskDB);
-
       emit(AppgeteDB());
     });
     ;
@@ -122,8 +119,7 @@ class AppCubit extends Cubit<AppStastes> {
   void deleteFromDB({
     @required int id,
   }) {
-    dataBase.rawDelete(
-        'DELETE FROM tasks WHERE id = ?', [id]).then((value) {
+    dataBase.rawDelete('DELETE FROM tasks WHERE id = ?', [id]).then((value) {
       getFromDB(dataBase);
       emit(AppDeleteDB());
     });
@@ -136,5 +132,13 @@ class AppCubit extends Cubit<AppStastes> {
     openBottomSheet = isShow;
     iconFloatingActionButton = icon;
     emit(AppCangBotomSheetState());
+  }
+
+  bool isdark = false;
+  void themChange() {
+    isdark = !isdark;
+    CacheHelper.setBoll(key: 'isdark', value: isdark).then((value) {
+      emit(AppCangThemeState());
+    });
   }
 }

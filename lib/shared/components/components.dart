@@ -122,14 +122,7 @@ Widget tasksBuilder({
       builder: (context) => ListView.separated(
         itemBuilder: (context, index) =>
             builedTaskInfo(getTaskDB[index], context),
-        separatorBuilder: (context, index) => Padding(
-          padding: const EdgeInsetsDirectional.only(start: 20, end: 20),
-          child: Container(
-            color: Colors.grey[300],
-            width: double.infinity,
-            height: 1,
-          ),
-        ),
+        separatorBuilder: (context, index) => separatorB(),
         itemCount: getTaskDB.length,
       ),
       condition: getTaskDB.length > 0,
@@ -146,4 +139,77 @@ Widget tasksBuilder({
           ],
         ),
       ),
+    );
+Widget buildArticleItem(article,context) {
+  if (article['urlToImage'] == null) {
+    article['urlToImage'] = 'https://i.stack.imgur.com/y9DpT.jpg';
+  }
+  return Row(
+    children: [
+      Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(25),
+          image: DecorationImage(
+            image: NetworkImage(
+              '${article['urlToImage']}',
+            ),
+            fit: BoxFit.fill,
+          ),
+        ),
+        width: 150,
+        height: 150,
+      ),
+      SizedBox(
+        width: 20,
+      ),
+      Expanded(
+        child: Container(
+          width: 150,
+          height: 150,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: Text(
+                  '${article['title']}',
+                  maxLines: 4,
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(context).textTheme.bodyText1,
+                ),
+              ),
+              Text(
+                '${article['publishedAt']}',
+                style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.grey),
+              ),
+            ],
+          ),
+        ),
+      ),
+    ],
+  );
+}
+
+Widget separatorB() => Padding(
+      padding: const EdgeInsetsDirectional.only(start: 20, end: 20),
+      child: Container(
+        color: Colors.grey[300],
+        width: double.infinity,
+        height: 1,
+      ),
+    );
+
+Widget articlaeBuilder(list) => ConditionalBuilder(
+      condition: list.length > 0,
+      builder: (context) => ListView.separated(
+          physics: BouncingScrollPhysics(),
+          itemBuilder: (context, index) => Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: buildArticleItem(list[index],context),
+              ),
+          separatorBuilder: (context, index) => separatorB(),
+          itemCount: list.length),
+      fallback: (context) => Center(child: CircularProgressIndicator()),
     );

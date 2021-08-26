@@ -17,3 +17,5 @@ class AppCangBotomSheetState extends AppStastes {}
 class AppUpdateeDB extends AppStastes {}
 
 class AppDeleteDB extends AppStastes {}
+class AppCangThemeState extends AppStastes {}
+
