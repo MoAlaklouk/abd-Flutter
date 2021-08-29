@@ -12,3 +12,7 @@
  // https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=545215c0085a4510ba607f072682e79c
  // https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=  545215c0085a4510ba607f072682e79c
 //  https://newsapi.org/v2/top-headlines?q=trump&apiKey=545215c0085a4510ba607f072682e79c
+ 
+
+ //search
+ //https://newsapi.org/v2/everything?q=tesla&from=2021-07-26&sortBy=publishedAt&apiKey=545215c0085a4510ba607f072682e79c

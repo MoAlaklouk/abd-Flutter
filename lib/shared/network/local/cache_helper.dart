@@ -14,7 +14,7 @@ class CacheHelper {
     return await sharedPreferences.setBool(key, value);
   }
 
-  static geyBoll({
+  static getBool({
     @required String key,
   }) {
     return sharedPreferences.getBool(key);

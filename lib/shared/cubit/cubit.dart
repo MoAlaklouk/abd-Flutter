@@ -135,10 +135,15 @@ class AppCubit extends Cubit<AppStastes> {
   }
 
   bool isdark = false;
-  void themChange() {
-    isdark = !isdark;
-    CacheHelper.setBoll(key: 'isdark', value: isdark).then((value) {
-      emit(AppCangThemeState());
-    });
+  void themChange({bool fromShered}) {
+    if (fromShered != null) {
+      isdark = fromShered;
+      emit(AppCangThemeState());  
+    } else {
+      isdark = !isdark;
+      CacheHelper.setBoll(key: 'isdark', value: isdark).then((value) {
+        emit(AppCangThemeState());
+      });
+    }
   }
 }
