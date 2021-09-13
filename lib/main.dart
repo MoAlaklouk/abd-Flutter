@@ -1,8 +1,12 @@
+import 'package:app/layout/shop_app/shop_layout.dart';
+import 'package:app/modules/shopApp_secreens/boarding_secreen.dart';
+import 'package:app/modules/shopApp_secreens/shop_login/shopLogin_secreen.dart';
 import 'package:app/shared/bloc_opserver.dart';
 import 'package:app/shared/cubit/cubit.dart';
 import 'package:app/shared/cubit/states.dart';
 import 'package:app/shared/network/local/cache_helper.dart';
 import 'package:app/shared/network/remote/dio_helper.dart';
+import 'package:app/shared/styles/themes.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -20,14 +24,34 @@ void main() async {
   DioHelper.init();
   await CacheHelper.init();
   Bloc.observer = MyBlocObserver();
-  bool isdark = CacheHelper.getBool(key: 'isdark');
-  runApp(MyApp(isdark));
+  bool isdark = CacheHelper.getData(key: 'isdark');
+  Widget widget;
+  bool onboarding = CacheHelper.getData(key: 'onBoarding');
+  String token = CacheHelper.getData(key: 'token');
+
+  print(onboarding);
+
+  if (onboarding != null) {
+    if (token != null) {
+      widget = ShopLayout();
+    } else {
+      widget = ShopLoginSecreen();
+    }
+  } else {
+    widget = BoardingSecreen();
+  }
+
+  runApp(MyApp(
+    isdark: isdark,
+    startWidget: widget,
+  ));
 }
 
 class MyApp extends StatelessWidget {
   final bool isdark;
+  final Widget startWidget;
 
-  MyApp(this.isdark);
+  MyApp({this.isdark, this.startWidget});
 
   @override
   Widget build(BuildContext context) {
@@ -38,78 +62,17 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => AppCubit()..themChange(fromShered: isdark),
-        ) 
+        )
       ],
       child: BlocConsumer<AppCubit, AppStastes>(
         listener: (context, state) {},
         builder: (context, state) => MaterialApp(
-          theme: ThemeData(
-            primarySwatch: Colors.deepOrange,
-            appBarTheme: AppBarTheme(
-                backwardsCompatibility: false,
-                systemOverlayStyle: SystemUiOverlayStyle(
-                  statusBarColor: Colors.white,
-                  statusBarIconBrightness: Brightness.dark,
-                ),
-                titleTextStyle: TextStyle(
-                    color: Colors.black,
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold),
-                iconTheme: IconThemeData(
-                  color: Colors.black,
-                ),
-                backgroundColor: Colors.white,
-                titleSpacing: 20,
-                elevation: 0),
-            scaffoldBackgroundColor: Colors.white,
-            bottomNavigationBarTheme: BottomNavigationBarThemeData(
-                type: BottomNavigationBarType.fixed,
-                selectedItemColor: Colors.deepOrange,
-                backgroundColor: Colors.white,
-                unselectedItemColor: Colors.black),
-            textTheme: TextTheme(
-              bodyText1: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ),
-          darkTheme: ThemeData(
-            primarySwatch: Colors.deepOrange,
-            appBarTheme: AppBarTheme(
-                backwardsCompatibility: false,
-                systemOverlayStyle: SystemUiOverlayStyle(
-                  statusBarColor: HexColor('333739'),
-                  statusBarIconBrightness: Brightness.light,
-                ),
-                titleTextStyle: TextStyle(
-                    color: Colors.white,
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold),
-                iconTheme: IconThemeData(
-                  color: Colors.white,
-                ),
-                backgroundColor: HexColor('333739'),
-                titleSpacing: 20,
-                elevation: 0),
-            scaffoldBackgroundColor: HexColor('333739'),
-            bottomNavigationBarTheme: BottomNavigationBarThemeData(
-                type: BottomNavigationBarType.fixed,
-                selectedItemColor: Colors.deepOrange,
-                backgroundColor: HexColor('333739'),
-                unselectedItemColor: Colors.white),
-            textTheme: TextTheme(
-              bodyText1: TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ),
+          theme: LightTheme(),
+          darkTheme: darkTheme(),
           themeMode:
               AppCubit.get(context).isdark ? ThemeMode.dark : ThemeMode.light,
           debugShowCheckedModeBanner: false,
-          home: NewsSecreen(),
+          home: startWidget,
         ),
       ),
     );

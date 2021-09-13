@@ -2,6 +2,7 @@ import 'package:app/modules/newsapp_secreens/web_view/web_view.dart';
 import 'package:app/shared/cubit/cubit.dart';
 import 'package:conditional_builder/conditional_builder.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 Widget defaultButton({
@@ -229,3 +230,42 @@ void naviagtTo(context, Widget) => Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => Widget),
     );
+
+void naviagtTofinish(context, Widget) => Navigator.pushAndRemoveUntil(
+    context,
+    MaterialPageRoute(
+      builder: (context) => Widget,
+    ),
+    (route) => false);
+void toast({@required String masg, @required ToastStates state}) {
+  Fluttertoast.showToast(
+      msg: masg,
+      toastLength: Toast.LENGTH_LONG,
+      gravity: ToastGravity.BOTTOM,
+      timeInSecForIosWeb: 5,
+      backgroundColor: chooseColor(state),
+      textColor: Colors.white,
+      fontSize: 16.0);
+}
+
+enum ToastStates { SUCCESS, ERORR, WARNING }
+
+Color chooseColor(ToastStates state) {
+  Color color;
+
+  switch (state) {
+    case ToastStates.SUCCESS:
+      color = Colors.green;
+
+      break;
+    case ToastStates.ERORR:
+      color = Colors.red;
+
+      break;
+    case ToastStates.WARNING:
+      color = Colors.amber;
+
+      break;
+  }
+  return color;
+}
