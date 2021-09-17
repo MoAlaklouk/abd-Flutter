@@ -1,3 +1,4 @@
+import 'package:app/layout/shop_app/cubit/cubit.dart';
 import 'package:app/layout/shop_app/shop_layout.dart';
 import 'package:app/modules/shopApp_secreens/boarding_secreen.dart';
 import 'package:app/modules/shopApp_secreens/shop_login/shopLogin_secreen.dart';
@@ -18,8 +19,11 @@ import 'layout/news_app/cubit/cubit.dart';
 import 'layout/news_app/news_layout.dart';
 import 'layout/todo_app/home_layout.dart';
 import 'modules/home/home_man.dart';
+import 'shared/components/constants.dart';
 
 void main() async {
+  // بيتأكد ان كل حاجه هنا في الميثود خلصت و بعدين يتفح الابلكيشن
+
   WidgetsFlutterBinding.ensureInitialized();
   DioHelper.init();
   await CacheHelper.init();
@@ -27,7 +31,8 @@ void main() async {
   bool isdark = CacheHelper.getData(key: 'isdark');
   Widget widget;
   bool onboarding = CacheHelper.getData(key: 'onBoarding');
-  String token = CacheHelper.getData(key: 'token');
+  token = CacheHelper.getData(key: 'token');
+  print(token);
 
   print(onboarding);
 
@@ -62,7 +67,13 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => AppCubit()..themChange(fromShered: isdark),
-        )
+        ),
+        BlocProvider(
+            create: (context) => ShopCubit()
+              ..getHomeData()
+              ..getcategoriesData()
+              ..getFavoritesData()
+              ..getProfileData())
       ],
       child: BlocConsumer<AppCubit, AppStastes>(
         listener: (context, state) {},

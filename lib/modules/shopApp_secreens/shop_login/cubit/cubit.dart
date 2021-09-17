@@ -1,6 +1,6 @@
-
-import 'package:app/models/shop_model/shop_model.dart';
+import 'package:app/models/shop_model/shopLogin_model.dart';
 import 'package:app/modules/shopApp_secreens/shop_login/cubit/state.dart';
+import 'package:app/shared/components/constants.dart';
 import 'package:app/shared/network/remote/dio_helper.dart';
 import 'package:app/shared/network/remote/end_point.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ShopLoginCubit extends Cubit<ShopLoginStates> {
-  ShopLoginCubit() : super(ShopInitialState());
+  ShopLoginCubit() : super(ShopLoginInitialState());
 
   static ShopLoginCubit get(context) => BlocProvider.of(context);
   ShopLoginModel loginModel;
@@ -17,13 +17,17 @@ class ShopLoginCubit extends Cubit<ShopLoginStates> {
     @required String password,
   }) {
     emit(ShopLoginLoadingState());
-    DioHelper.postData(url: LOGIN, data: {
-      'email': email,
-      'password': password,
-    }).then((value) {
+    DioHelper.postData(
+      url: LOGIN,
+      token: token,
+      data: {
+        'email': email,
+        'password': password,
+      },
+    ).then((value) {
       print(value.data);
-     loginModel= ShopLoginModel.fromJson(value.data);
-      emit(ShopSucssesState(loginModel));
+      loginModel = ShopLoginModel.fromJson(value.data);
+      emit(ShopLoginSuccessState(loginModel));
     }).catchError((error) {
       print(error.toString());
       emit(ShopErorrState(error.toString()));

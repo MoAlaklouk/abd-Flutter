@@ -16,10 +16,8 @@ class UserData {
   String phone;
   int id;
   String image;
-
   int points;
   int credit;
-
   String token;
   //named constractor
 

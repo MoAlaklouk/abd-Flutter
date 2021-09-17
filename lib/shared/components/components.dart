@@ -205,11 +205,20 @@ Widget buildArticleItem(
 
 Widget separatorB() => Padding(
       padding: const EdgeInsetsDirectional.only(start: 20, end: 20),
-      child: Container(
-        color: Colors.grey[300],
-        width: double.infinity,
-        height: 1,
+      
+      child: Column(
+        children: [
+            
+          Container(
+            color: Colors.grey[300],
+            width: double.infinity,
+            height: 1,
+            
+          ),
+         
+        ],
       ),
+      
     );
 
 Widget articlaeBuilder(list, {isSearch = false}) => ConditionalBuilder(
@@ -263,7 +272,7 @@ Color chooseColor(ToastStates state) {
 
       break;
     case ToastStates.WARNING:
-      color = Colors.amber;
+      color = Colors.yellow;
 
       break;
   }

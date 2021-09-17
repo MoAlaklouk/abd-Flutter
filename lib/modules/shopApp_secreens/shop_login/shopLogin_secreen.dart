@@ -1,9 +1,11 @@
+import 'package:app/layout/shop_app/cubit/cubit.dart';
 import 'package:app/layout/shop_app/shop_layout.dart';
 import 'package:app/layout/todo_app/home_layout.dart';
 import 'package:app/modules/shopApp_secreens/shop_login/cubit/cubit.dart';
 import 'package:app/modules/shopApp_secreens/shop_login/cubit/state.dart';
-import 'package:app/modules/shopApp_secreens/shop_register_secreen.dart';
+import 'package:app/modules/shopApp_secreens/shop_register/shop_register_secreen.dart';
 import 'package:app/shared/components/components.dart';
+import 'package:app/shared/components/constants.dart';
 import 'package:app/shared/network/local/cache_helper.dart';
 import 'package:conditional_builder/conditional_builder.dart';
 import 'package:flutter/material.dart';
@@ -129,7 +131,7 @@ class ShopLoginSecreen extends StatelessWidget {
                             ),
                             TextButton(
                               onPressed: () {
-                                naviagtTo(context, ShopRegisterSecreen());
+                                naviagtTo(context, ShopRegisterScreen());
                               },
                               child: Text('REGISTER'),
                             )
@@ -143,16 +145,17 @@ class ShopLoginSecreen extends StatelessWidget {
             ),
           ),
           listener: (context, state) {
-            if (state is ShopSucssesState) {
+            if (state is ShopLoginSuccessState) {
+              ShopCubit.get(context).currentIndex = 0;
               if (state.loginModel.status) {
-                print(state.loginModel.message);
-                print(state.loginModel.data.token);
-                naviagtTo(context, ShopLayout());
+                naviagtTofinish(context, ShopLayout());
+
                 CacheHelper.saveData(
                   key: 'token',
                   value: state.loginModel.data.token,
                 );
-           
+                token = state.loginModel.data.token;
+                print(token);
                 toast(
                   state: ToastStates.SUCCESS,
                   masg: state.loginModel.message,
