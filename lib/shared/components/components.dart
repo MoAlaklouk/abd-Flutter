@@ -205,20 +205,15 @@ Widget buildArticleItem(
 
 Widget separatorB() => Padding(
       padding: const EdgeInsetsDirectional.only(start: 20, end: 20),
-      
       child: Column(
         children: [
-            
           Container(
             color: Colors.grey[300],
             width: double.infinity,
             height: 1,
-            
           ),
-         
         ],
       ),
-      
     );
 
 Widget articlaeBuilder(list, {isSearch = false}) => ConditionalBuilder(
@@ -240,12 +235,15 @@ void naviagtTo(context, Widget) => Navigator.push(
       MaterialPageRoute(builder: (context) => Widget),
     );
 
-void naviagtTofinish(context, Widget) => Navigator.pushAndRemoveUntil(
-    context,
-    MaterialPageRoute(
-      builder: (context) => Widget,
-    ),
-    (route) => false);
+void naviagtTofinish(context, widget) => Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(
+        builder: (context) => widget,
+      ),
+      (route) {
+        return false;
+      },
+    );
 void toast({@required String masg, @required ToastStates state}) {
   Fluttertoast.showToast(
       msg: masg,

@@ -1,3 +1,5 @@
+import 'package:app/layout/shop_app/cubit/cubit.dart';
+import 'package:app/layout/shop_app/cubit/states.dart';
 import 'package:app/models/shop_model/shopLogin_model.dart';
 import 'package:app/modules/shopApp_secreens/shop_login/cubit/state.dart';
 import 'package:app/shared/components/constants.dart';
@@ -19,7 +21,6 @@ class ShopLoginCubit extends Cubit<ShopLoginStates> {
     emit(ShopLoginLoadingState());
     DioHelper.postData(
       url: LOGIN,
-      token: token,
       data: {
         'email': email,
         'password': password,
@@ -27,10 +28,11 @@ class ShopLoginCubit extends Cubit<ShopLoginStates> {
     ).then((value) {
       print(value.data);
       loginModel = ShopLoginModel.fromJson(value.data);
+
       emit(ShopLoginSuccessState(loginModel));
     }).catchError((error) {
       print(error.toString());
-      emit(ShopErorrState(error.toString()));
+      emit(ShopLoginErorrState(error.toString()));
     });
   }
 

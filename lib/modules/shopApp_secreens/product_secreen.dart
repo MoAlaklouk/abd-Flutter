@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 import 'package:app/layout/shop_app/cubit/cubit.dart';
 import 'package:app/layout/shop_app/cubit/states.dart';
@@ -13,12 +12,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class ProductSsecreen extends StatelessWidget {
+class ProductsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<ShopCubit, ShopStates>(
       listener: (context, state) {
-        if (state is ShopSuccessChangeFavoriteState) {
+        if (state is ShopSuccessChangeFavoritesState) {
           if (!state.model.status) {
             toast(
               masg: state.model.message,
@@ -183,7 +182,7 @@ class ProductSsecreen extends StatelessWidget {
                     IconButton(
                       onPressed: () {
                         print(model.id);
-                        ShopCubit.get(context).changedFavorite(model.id);
+                        ShopCubit.get(context).changeFavorites(model.id);
                       },
                       icon: ShopCubit.get(context).favorites[model.id]
                           ? Icon(

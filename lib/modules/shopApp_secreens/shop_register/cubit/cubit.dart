@@ -25,7 +25,6 @@ class ShopRegisterCubit extends Cubit<ShopRegisterStates> {
 
     DioHelper.postData(
       url: REGISTER,
-      token: token,
       data:
       {
         'name': name,

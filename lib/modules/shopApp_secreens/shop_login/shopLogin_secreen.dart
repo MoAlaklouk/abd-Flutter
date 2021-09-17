@@ -6,6 +6,7 @@ import 'package:app/modules/shopApp_secreens/shop_login/cubit/state.dart';
 import 'package:app/modules/shopApp_secreens/shop_register/shop_register_secreen.dart';
 import 'package:app/shared/components/components.dart';
 import 'package:app/shared/components/constants.dart';
+import 'package:app/shared/cubit/cubit.dart';
 import 'package:app/shared/network/local/cache_helper.dart';
 import 'package:conditional_builder/conditional_builder.dart';
 import 'package:flutter/material.dart';
@@ -23,12 +24,12 @@ class ShopLoginSecreen extends StatelessWidget {
         child: BlocConsumer<ShopLoginCubit, ShopLoginStates>(
           builder: (context, state) => Scaffold(
             appBar: AppBar(),
-            body: Form(
-              key: formKey,
-              child: Center(
-                child: SingleChildScrollView(
-                  child: Padding(
-                    padding: const EdgeInsets.all(20.0),
+            body: Center(
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Form(
+                    key: formKey,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -146,25 +147,25 @@ class ShopLoginSecreen extends StatelessWidget {
           ),
           listener: (context, state) {
             if (state is ShopLoginSuccessState) {
-              ShopCubit.get(context).currentIndex = 0;
               if (state.loginModel.status) {
-                naviagtTofinish(context, ShopLayout());
 
                 CacheHelper.saveData(
                   key: 'token',
                   value: state.loginModel.data.token,
-                );
-                token = state.loginModel.data.token;
-                print(token);
-                toast(
-                  state: ToastStates.SUCCESS,
-                  masg: state.loginModel.message,
-                );
+                ).then((value) {
+                  token = state.loginModel.data.token;
+
+                  naviagtTofinish(
+                    context,
+                    ShopLayout(),
+                  );
+                });
               } else {
                 print(state.loginModel.message);
+
                 toast(
-                  state: ToastStates.ERORR,
                   masg: state.loginModel.message,
+                  state: ToastStates.ERORR,
                 );
               }
             }

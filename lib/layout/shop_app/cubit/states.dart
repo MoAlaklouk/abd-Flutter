@@ -1,61 +1,54 @@
-import 'package:app/models/shop_model/favorites_model.dart';
+import 'package:app/models/shop_model/favorite_change_model.dart';
 import 'package:app/models/shop_model/shopLogin_model.dart';
 
 abstract class ShopStates {}
 
 class ShopInitialState extends ShopStates {}
 
-class ChangedBottomNevState extends ShopStates {}
+class ShopChangeBottomNavState extends ShopStates {}
 
 class ShopLoadingHomeDataState extends ShopStates {}
 
 class ShopSuccessHomeDataState extends ShopStates {}
 
-class ShopErorrHomeDataState extends ShopStates {
-  final error;
-
-  ShopErorrHomeDataState(this.error);
-}
+class ShopErrorHomeDataState extends ShopStates {}
 
 class ShopSuccessCategoriesState extends ShopStates {}
 
-class ShopErorrCategoriesState extends ShopStates {
-  final error;
+class ShopErrorCategoriesState extends ShopStates {}
 
-  ShopErorrCategoriesState(this.error);
+class ShopChangeFavoritesState extends ShopStates {}
+
+class ShopSuccessChangeFavoritesState extends ShopStates {
+  final ChangeFavoritesModel model;
+
+  ShopSuccessChangeFavoritesState(this.model);
 }
 
-class ShopChangeFavoriteState extends ShopStates {}
+class ShopErrorChangeFavoritesState extends ShopStates {}
 
-class ShopSuccessChangeFavoriteState extends ShopStates {
-  final FavoritesModel model;
+class ShopLoadingGetFavoritesState extends ShopStates {}
 
-  ShopSuccessChangeFavoriteState(this.model);
-}
+class ShopSuccessGetFavoritesState extends ShopStates {}
 
-class ShopErorrChangeFavoriteState extends ShopStates {
-  final error;
+class ShopErrorGetFavoritesState extends ShopStates {}
 
-  ShopErorrChangeFavoriteState(this.error);
-}
+class ShopLoadingUserDataState extends ShopStates {}
 
-class ShopSuccessGetFavDataState extends ShopStates {}
-
-class ShopErorrGetFavDataState extends ShopStates {
-  final error;
-
-  ShopErorrGetFavDataState(this.error);
-}
-class ShopGetProfileDataState extends ShopStates {}
-
-class ShopSuccessGetProfileDataState extends ShopStates {
+class ShopSuccessUserDataState extends ShopStates {
   final ShopLoginModel loginModel;
 
-  ShopSuccessGetProfileDataState(this.loginModel);
+  ShopSuccessUserDataState(this.loginModel);
 }
 
-class ShopErorrGetProfileDataState extends ShopStates {
-  final error;
+class ShopErrorUserDataState extends ShopStates {}
 
-  ShopErorrGetProfileDataState(this.error);
+class ShopLoadingUpdateUserState extends ShopStates {}
+
+class ShopSuccessUpdateUserState extends ShopStates {
+  final ShopLoginModel loginModel;
+
+  ShopSuccessUpdateUserState(this.loginModel);
 }
+
+class ShopErrorUpdateUserState extends ShopStates {}
