@@ -52,3 +52,9 @@ class ShopSuccessUpdateUserState extends ShopStates {
 }
 
 class ShopErrorUpdateUserState extends ShopStates {}
+
+class SearchLoadingState extends ShopStates {}
+
+class SearchSuccessState extends ShopStates {}
+
+class SearchErrorState extends ShopStates {}

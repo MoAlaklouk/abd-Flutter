@@ -1,5 +1,7 @@
+import 'package:app/layout/shop_app/cubit/cubit.dart';
 import 'package:app/modules/newsapp_secreens/web_view/web_view.dart';
 import 'package:app/shared/cubit/cubit.dart';
+import 'package:app/shared/styles/colors.dart';
 import 'package:conditional_builder/conditional_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -276,3 +278,97 @@ Color chooseColor(ToastStates state) {
   }
   return color;
 }
+
+Widget favoItems(model, context, {bool isSearch = true}) => Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Container(
+        height: 120,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Stack(
+              alignment: AlignmentDirectional.bottomStart,
+              children: [
+                Image(
+                  image: NetworkImage(model.image),
+                  width: 120,
+                  height: 120,
+                ),
+                if (model.discount != 0 && isSearch)
+                  Container(
+                    padding: EdgeInsetsDirectional.all(2),
+                    color: Colors.red,
+                    child: Text(
+                      'Discount',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                  )
+              ],
+            ),
+            SizedBox(
+              width: 20,
+            ),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    model.name,
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  Spacer(),
+                  SizedBox(
+                    height: 7,
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        model.price.toString(),
+                        style: TextStyle(
+                            color: DefaultColer(), fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      if (model.discount != 0 && isSearch)
+                        Text(
+                          model.oldPrice.toString(),
+                          style: TextStyle(
+                            color: Colors.grey,
+                            fontSize: 12,
+                            decoration: TextDecoration.lineThrough,
+                          ),
+                        ),
+
+                      Spacer(),
+                      if(isSearch)
+                      IconButton(
+                        onPressed: () {
+                          print('model.id');
+                          ShopCubit.get(context)
+                              .changeFavorites(model.id);
+                        },
+                        icon: ShopCubit.get(context).favorites[model.id]
+                            ? Icon(
+                                Icons.favorite,
+                                color: Colors.red,
+                              )
+                            : Icon(
+                                Icons.favorite_border,
+                              ),
+                      ),
+                      // padding:EdgeInsets.zero ,
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );

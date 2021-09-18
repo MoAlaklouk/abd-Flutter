@@ -3,6 +3,7 @@ import 'package:app/models/shop_model/categories_model.dart';
 import 'package:app/models/shop_model/favorites_model.dart';
 import 'package:app/models/shop_model/favorite_change_model.dart';
 import 'package:app/models/shop_model/home_model.dart';
+import 'package:app/models/shop_model/search_model.dart';
 import 'package:app/models/shop_model/shopLogin_model.dart';
 import 'package:app/modules/shopApp_secreens/categories_secreen.dart';
 import 'package:app/modules/shopApp_secreens/favorites_secreen.dart';
@@ -170,7 +171,28 @@ class ShopCubit extends Cubit<ShopStates> {
     });
   }
 
+ SearchModel model;
 
+  void search(String text) {
+    emit(SearchLoadingState());
+
+    DioHelper.postData(
+      url: SEARCH,
+      token: token,
+      data: {
+        'text': text,
+      },
+    ).then((value)
+    {
+      model = SearchModel.fromJson(value.data);
+
+      emit(SearchSuccessState());
+    }).catchError((error)
+    {
+      print(error.toString());
+      emit(SearchErrorState());
+    });
+  }
   
   }
 
