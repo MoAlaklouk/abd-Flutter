@@ -1,4 +1,3 @@
-
 import 'package:app/modules/shopApp_secreens/shop_login/shopLogin_secreen.dart';
 import 'package:app/shared/components/components.dart';
 import 'package:app/shared/network/local/cache_helper.dart';
@@ -30,18 +29,18 @@ class _BoardingSecreenState extends State<BoardingSecreen> {
   List<BoardarModel> boarder = [
     BoardarModel(
       image: 'assets/images/boardar1.png',
-      body: 'Bord 1 Body',
-      titel: 'Bord 1 Titel',
+      body: 'Many of products',
+      titel: 'Shop App',
     ),
     BoardarModel(
       image: 'assets/images/boardar2.png',
-      body: 'Bord 2 Body',
-      titel: 'Bord 2 Titel',
+      body: 'Favorite Items',
+      titel: 'Easy',
     ),
     BoardarModel(
       image: 'assets/images/boardar3.png',
-      body: 'Bord 3 Body',
-      titel: 'Bord 3 Titel',
+      body: 'Buy some products',
+      titel: 'Buy',
     ),
   ];
   void submit() {
@@ -64,7 +63,6 @@ class _BoardingSecreenState extends State<BoardingSecreen> {
                 style: TextStyle(
                   fontSize: 18,
                 ),
-                
               ))
         ],
       ),
@@ -104,6 +102,8 @@ class _BoardingSecreenState extends State<BoardingSecreen> {
                 ),
                 Spacer(),
                 FloatingActionButton(
+                  
+                  
                   onPressed: () {
                     if (last) {
                       submit();
@@ -117,7 +117,7 @@ class _BoardingSecreenState extends State<BoardingSecreen> {
                     }
                   },
                   child: Icon(
-                    Icons.arrow_forward,
+                    Icons.arrow_forward,color: Colors.white,
                   ),
                 ),
               ],

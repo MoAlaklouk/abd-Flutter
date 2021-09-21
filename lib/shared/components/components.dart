@@ -32,18 +32,20 @@ Widget defaultButton({
         ),
       ),
     );
-Widget textfield(
-        {@required TextEditingController controller,
-        @required Function validate,
-        Function onChange,
-        Function onSubmit,
-        @required TextInputType inputType,
-        @required String text,
-        @required IconData prefix,
-        IconData suffixIcon,
-        Function suffixPress,
-        bool isPassword = false,
-        Function OnTapFunc}) =>
+Widget textfield({
+  @required TextEditingController controller,
+  @required Function validate,
+  Function onChange,
+  Function onSubmit,
+  @required TextInputType inputType,
+  @required String text,
+  @required IconData prefix,
+  IconData suffixIcon,
+  Function suffixPress,
+  bool isPassword = false,
+  double radius = 0.0,
+  Function OnTapFunc,
+}) =>
     TextFormField(
       onTap: OnTapFunc,
       controller: controller,
@@ -58,7 +60,9 @@ Widget textfield(
         suffixIcon: suffixIcon != null
             ? IconButton(icon: Icon(suffixIcon), onPressed: suffixPress)
             : null,
-        border: OutlineInputBorder(),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(radius),
+        ),
       ),
     );
 
@@ -346,22 +350,21 @@ Widget favoItems(model, context, {bool isSearch = true}) => Padding(
                         ),
 
                       Spacer(),
-                      if(isSearch)
-                      IconButton(
-                        onPressed: () {
-                          print('model.id');
-                          ShopCubit.get(context)
-                              .changeFavorites(model.id);
-                        },
-                        icon: ShopCubit.get(context).favorites[model.id]
-                            ? Icon(
-                                Icons.favorite,
-                                color: Colors.red,
-                              )
-                            : Icon(
-                                Icons.favorite_border,
-                              ),
-                      ),
+                      if (isSearch)
+                        IconButton(
+                          onPressed: () {
+                            print('model.id');
+                            ShopCubit.get(context).changeFavorites(model.id);
+                          },
+                          icon: ShopCubit.get(context).favorites[model.id]
+                              ? Icon(
+                                  Icons.favorite,
+                                  color: Colors.red,
+                                )
+                              : Icon(
+                                  Icons.favorite_border,
+                                ),
+                        ),
                       // padding:EdgeInsets.zero ,
                     ],
                   ),

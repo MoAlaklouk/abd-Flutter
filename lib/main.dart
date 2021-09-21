@@ -20,7 +20,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   Bloc.observer = MyBlocObserver();
-  DioHelper.init();
+    DioHelper.init();
   await CacheHelper.init();
 
   bool isDark = CacheHelper.getData(key: 'isDark');

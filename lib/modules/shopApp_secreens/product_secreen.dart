@@ -66,7 +66,7 @@ class ProductsScreen extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Text(
               'Categories',
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.w400),
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.w400,fontFamily: 'Merienda'),
             ),
           ),
           Container(
@@ -86,7 +86,7 @@ class ProductsScreen extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Text(
               'New Products',
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.w400),
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.w400,fontFamily: 'Merienda'),
             ),
           ),
           SizedBox(

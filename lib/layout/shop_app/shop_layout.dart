@@ -2,6 +2,7 @@ import 'package:app/layout/shop_app/cubit/cubit.dart';
 import 'package:app/layout/shop_app/cubit/states.dart';
 import 'package:app/modules/shopApp_secreens/search_secreen.dart';
 import 'package:app/shared/components/components.dart';
+import 'package:app/shared/styles/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -22,7 +23,7 @@ class ShopLayout extends StatelessWidget {
           return Scaffold(
             appBar: AppBar(
               title: Text(
-                'Salla',
+                'Salla',style: TextStyle(fontFamily: 'Merienda'),
               ),
               actions: [
                 IconButton(
@@ -56,6 +57,7 @@ class ShopLayout extends StatelessWidget {
                     Icons.apps,
                   ),
                   label: 'Categories',
+                  
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(

@@ -25,6 +25,7 @@ class SearchScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     textfield(
+                      radius: 50  ,
                       controller: searchController,
                       inputType: TextInputType.text,
                       validate: (String value) {

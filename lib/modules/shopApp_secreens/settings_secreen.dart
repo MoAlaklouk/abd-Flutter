@@ -49,10 +49,11 @@ class SettingsScreen extends StatelessWidget {
                         if (state is ShopLoadingUpdateUserState)
                           LinearProgressIndicator(),
                         SizedBox(
-                          height: 20,
+                          height: 40,
                         ),
                         textfield(
                           controller: nameController,
+                          radius: 50,
                           validate: (String value) {
                             if (value.isEmpty) {
                               return 'You must fill in the field';
@@ -63,9 +64,10 @@ class SettingsScreen extends StatelessWidget {
                           prefix: Icons.person,
                         ),
                         SizedBox(
-                          height: 20,
+                          height: 40,
                         ),
                         textfield(
+                          radius: 50,
                           controller: emailController,
                           validate: (String value) {
                             if (value.isEmpty) {
@@ -77,9 +79,10 @@ class SettingsScreen extends StatelessWidget {
                           prefix: Icons.email,
                         ),
                         SizedBox(
-                          height: 20,
+                          height: 40,
                         ),
                         textfield(
+                          radius: 50,
                           controller: phoneController,
                           validate: (String value) {
                             if (value.isEmpty) {
@@ -91,9 +94,10 @@ class SettingsScreen extends StatelessWidget {
                           prefix: Icons.phone,
                         ),
                         SizedBox(
-                          height: 20,
+                          height: 40,
                         ),
                         defaultButton(
+                          radius: 50,
                           function: () {
                             if (formKey.currentState.validate()) {
                               ShopCubit.get(context).userUpdateData(
@@ -106,13 +110,15 @@ class SettingsScreen extends StatelessWidget {
                           text: 'UPDATE',
                         ),
                         SizedBox(
-                          height: 20,
+                          height: 40,
                         ),
                         defaultButton(
-                            function: () {
-                              siginOtu(context);
-                            },
-                            text: 'LOGOUT'),
+                          radius: 50,
+                          function: () {
+                            siginOtu(context);
+                          },
+                          text: 'LOGOUT',
+                        ),
                       ],
                     ),
                   ),
